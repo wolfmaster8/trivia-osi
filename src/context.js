@@ -12,7 +12,7 @@ const initialState = {
   name: 'Felipe',
   score: '',
   trivia: {
-    currentQuestion: 1,
+    currentQuestion: 0,
     questions: []
   }
 };

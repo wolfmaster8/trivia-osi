@@ -7,7 +7,7 @@ import {ScoreStyled, User} from "./styles";
 
 const {Title} = Typography;
 
-function Score() {
+function Score({currentQuestionIndex}) {
     let {state, dispatch} = useContext(TriviaContext)
 
     return (
@@ -21,7 +21,7 @@ function Score() {
                         <Title level={4}>{state.name}</Title>
                     </div>
                     <Rate disabled defaultValue={5}/>
-                    <Statistic value={1} suffix="/ 10"/>
+                    <Statistic value={currentQuestionIndex} suffix="/ 10"/>
 
                 </User>
                 <Progress

@@ -10,6 +10,10 @@ export const allQuestions = [
       {
         description: 'Es 10',
         correct: true
+      },
+      {
+        description: 'S9',
+        correct: false
       }
     ]
   },
@@ -23,6 +27,10 @@ export const allQuestions = [
       {
         description: '87',
         correct: true
+      },
+      {
+        description: 'S9',
+        correct: false
       }
     ]
   },
@@ -36,6 +44,10 @@ export const allQuestions = [
       {
         description: '++',
         correct: true
+      },
+      {
+        description: 'S9',
+        correct: false
       }
     ]
   },
@@ -49,6 +61,10 @@ export const allQuestions = [
       {
         description: 'Bythesea',
         correct: true
+      },
+      {
+        description: 'S9',
+        correct: false
       }
     ]
   }
