@@ -1,25 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import TriviaContext from './context'
+import { TriviaProvider } from './context';
 import Start from './features/Start';
 import Trivia from './features/Trivia';
+import { MainWrapper } from './shared/styles';
 
 function App() {
-
-  const context = {
-    name: 'Felipe',
-    score: ''
-  }
   return (
     <Router>
-      <TriviaContext.Provider value={context}>
-      <Switch>
-        <Route component={Start} path="/" exact />
-        <Route component={Trivia} path="/trivia" exact />
-      </Switch>
-      </TriviaContext.Provider>
-      
+      <TriviaProvider>
+        <Switch>
+          <MainWrapper>
+            <Route component={Start} path="/" exact />
+            <Route component={Trivia} path="/trivia" exact />
+          </MainWrapper>
+        </Switch>
+      </TriviaProvider>
     </Router>
   );
 }
