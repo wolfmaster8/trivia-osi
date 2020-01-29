@@ -22,6 +22,7 @@ function Start(props) {
       props.form.validateFields((err, values) => {
           if(!err){
               dispatch({type: types.SET_NAME, payload: values.name})
+              dispatch({type: types.CHOOSE_QUESTIONS})
               props.history.push('/trivia')
           }
       })

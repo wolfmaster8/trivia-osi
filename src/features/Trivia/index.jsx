@@ -1,21 +1,26 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Link} from "react-router-dom";
-import { Button, Typography } from 'antd';
+import { Button, Typography, Radio, Card } from 'antd';
 
-import {TriviaConsumer} from '../../context'
+import {TriviaConsumer, TriviaContext, types} from '../../context'
 import Score from "../../shared/components/Score";
 
+import Question from "../../shared/components/Question";
 
 const { Title, Paragraph } = Typography;
 
 
 function Trivia() {
+  let {state, dispatch} = useContext(TriviaContext)
+
   return (
     <>
+      <Title>Trivia OSI</Title>
+      <Paragraph>¿Qué tanto sabes sobre las 7 capas de referencia OSI?</Paragraph>
       <Score/>
-        <Title>1/2</Title>
-        <Paragraph>Para comenzar haz click en "Comenzar"</Paragraph>
-        <Button size="large" type="primary"><Link to="/trivia">Comenzar!</Link></Button>
+      <Card>
+        <Question />
+      </Card>
     </>
   );
 }
