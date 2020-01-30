@@ -45,6 +45,7 @@ function Question({question = '', currentQuestionIndex = 1, nextQuestion}) {
                 <Radio.Group name="radiogroup">
                     {question.responses.map(answer => (
                         <Radio
+                            key={answer.description + currentQuestionIndex}
                             onClick={() => setSelected(answer)}
                             style={radioStyle}
                             value={answer.description + currentQuestionIndex}

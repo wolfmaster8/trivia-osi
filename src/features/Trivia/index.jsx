@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Link} from "react-router-dom";
-import { Badge, Typography, Radio, Card } from 'antd';
+import { Badge, Typography, Radio, Card, Button } from 'antd';
 
 import {TriviaConsumer, TriviaContext, types} from '../../context'
 import Score from "../../shared/components/Score";
@@ -49,9 +49,15 @@ class Trivia extends  React.Component {
         if(trivia.questions[trivia.currentQuestion +1]){
             dispatch({type: types.SET_NEXT_QUESTION})
         }else{
-            console.log('Finish')
+            this.props.history.push('/finish')
         }
       }
+
+        const resetTrivia = () => {
+            this.props.history.push('/')
+            dispatch({type: types.RESET_TRIVIA})
+        }
+
       return (
           <>
               <Title>Trivia OSI</Title>
@@ -70,7 +76,8 @@ class Trivia extends  React.Component {
                       nextQuestion={setNextQuestion}
                   />
               </Card>
-              <Link  to="/">Reset Trivia</Link>
+              <Button onClick={resetTrivia}>Reiniciar Trivia</Button>
+
           </>
       );
   }

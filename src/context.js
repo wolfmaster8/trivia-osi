@@ -8,7 +8,8 @@ export const types = {
   CHOOSE_QUESTIONS: 'CHOOSE_QUESTIONS',
   SET_INCORRECT_ANSWER: 'SET_INCORRECT_ANSWER',
   SET_CORRECT_ANSWER: 'SET_CORRECT_ANSWER',
-  SET_NEXT_QUESTION: 'SET_NEXT_QUESTION'
+  SET_NEXT_QUESTION: 'SET_NEXT_QUESTION',
+  RESET_TRIVIA: 'RESET_TRIVIA'
 };
 
 const initialState = {
@@ -33,6 +34,7 @@ const reducer = (state = initialState, action) => {
       return { ...state, name: action.payload.name };
     case types.CHOOSE_QUESTIONS:
       let questions = [];
+      let listOfQuestions = allQuestions.slice();
       let totalPoints = 0;
       let totalQuestions = allQuestions.length;
       const choose = action.payload.numberOfQuestions;
@@ -43,7 +45,7 @@ const reducer = (state = initialState, action) => {
         totalPoints = totalPoints + selected.score;
         questions.push(selected);
 
-        allQuestions.splice(randomNumber, 1);
+        listOfQuestions.splice(randomNumber, 1);
       }
       return { ...state, trivia: { ...state.trivia, questions, totalPoints } };
     case types.SET_CORRECT_ANSWER:
@@ -81,6 +83,8 @@ const reducer = (state = initialState, action) => {
           currentQuestion: state.trivia.currentQuestion + 1
         }
       };
+    case types.RESET_TRIVIA:
+      return initialState;
     default:
       return initialState;
   }
