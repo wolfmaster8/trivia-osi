@@ -4,7 +4,7 @@ import { allQuestions } from './shared/questions';
 let TriviaContext = React.createContext({});
 
 export const types = {
-  SET_NAME: 'SET_NAME',
+  INIT_TRIVIA: 'INIT_TRIVIA',
   CHOOSE_QUESTIONS: 'CHOOSE_QUESTIONS',
   SET_INCORRECT_ANSWER: 'SET_INCORRECT_ANSWER',
   SET_CORRECT_ANSWER: 'SET_CORRECT_ANSWER',
@@ -20,6 +20,7 @@ const initialState = {
       wrong: 0,
       correct: 0
     },
+    totalPoints: 0,
     currentQuestion: 0,
     questions: []
   }
@@ -27,24 +28,25 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.SET_NAME:
+    case types.INIT_TRIVIA:
       // console.log(action);
-      return { ...state, name: action.payload };
+      return { ...state, name: action.payload.name };
     case types.CHOOSE_QUESTIONS:
       let questions = [];
+      let totalPoints = 0;
       let totalQuestions = allQuestions.length;
-      const choose = 4;
+      const choose = action.payload.numberOfQuestions;
       for (let i = 0; i < choose; i++) {
         const randomNumber = Math.floor(Math.random() * totalQuestions);
         totalQuestions -= 1;
         const selected = allQuestions[randomNumber];
+        totalPoints = totalPoints + selected.score;
         questions.push(selected);
 
         allQuestions.splice(randomNumber, 1);
       }
-      return { ...state, trivia: { ...state.trivia, questions } };
+      return { ...state, trivia: { ...state.trivia, questions, totalPoints } };
     case types.SET_CORRECT_ANSWER:
-      console.log(`aaaa`, action);
       return {
         ...state,
         canGoToNext: true,
@@ -58,7 +60,6 @@ const reducer = (state = initialState, action) => {
         }
       };
     case types.SET_INCORRECT_ANSWER:
-      console.log(`aaaa`, action);
       return {
         ...state,
         canGoToNext: true,

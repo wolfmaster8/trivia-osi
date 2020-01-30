@@ -5,6 +5,7 @@ import { TriviaProvider } from './context';
 import Start from './features/Start';
 import Trivia from './features/Trivia';
 import { MainWrapper } from './shared/styles';
+import Finish from './features/Finish';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <MainWrapper>
             <Route component={Start} path="/" exact />
             <Route component={Trivia} path="/trivia" exact />
+            <Route component={Finish} path="/finish" exact />
           </MainWrapper>
         </Switch>
       </TriviaProvider>

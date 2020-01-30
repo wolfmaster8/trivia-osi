@@ -17,9 +17,13 @@ class Trivia extends  React.Component {
     }
 
     componentDidMount() {
-        const {dispatch} = this.context;
+        const {state, dispatch} = this.context;
+        if(!state.trivia.questions.length){
+            this.props.history.push('/')
+
+        }
         /* ONLY DEV */
-        dispatch({type: types.CHOOSE_QUESTIONS})
+        // dispatch({type: types.CHOOSE_QUESTIONS, payload: {numberOfQuestions: 2}})
         this.setState({loading: false})
     }
 
@@ -55,7 +59,7 @@ class Trivia extends  React.Component {
               <Score
                   currentQuestionIndex={state.trivia.currentQuestion +1}
               />
-              <Card style={{minWidth: 500}} loading={loading}>
+              <Card style={{minWidth: 500, marginBottom: 24}} loading={loading}>
                   <Badge
                       count={!loading && `${trivia.questions[trivia.currentQuestion].score} puntos`}
                       style={{ backgroundColor: !loading && getPointsColor() }}
@@ -66,7 +70,7 @@ class Trivia extends  React.Component {
                       nextQuestion={setNextQuestion}
                   />
               </Card>
-              <Link to="/">Reset</Link>
+              <Link  to="/">Reset Trivia</Link>
           </>
       );
   }

@@ -71,5 +71,23 @@ export const allQuestions = [
         correct: false
       }
     ]
+  },
+  {
+    score: 10,
+    inquiry: 'Builds the ',
+    responses: [
+      {
+        description: 'SIERRA9',
+        correct: false
+      },
+      {
+        description: 'Bythesea',
+        correct: true
+      },
+      {
+        description: 'S9',
+        correct: false
+      }
+    ]
   }
 ];

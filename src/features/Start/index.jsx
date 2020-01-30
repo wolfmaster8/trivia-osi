@@ -1,9 +1,10 @@
-import React, {useEffect, useContext} from 'react';
-import { Button, Typography, Form, Icon, Input } from 'antd';
+import React, { useEffect, useContext, useState } from 'react';
+import { Button, Typography, Form, Icon, Input, Slider } from 'antd';
 
 import {TriviaContext, types} from "../../context";
+import { allQuestions } from "../../shared/questions";
+import { FormStyled } from "./styles";
 
-import {MainWrapper} from "../../shared/styles";
 
 const { Title, Paragraph } = Typography;
 
@@ -12,29 +13,36 @@ function hasErrors(fieldsError) {
 }
 
 function Start(props) {
-    let { dispatch} =  useContext(TriviaContext)
+    const [questionsNumber, setQuestionsNumber] = useState(1)
+    let {dispatch} =  useContext(TriviaContext)
   useEffect(() => {
     props.form.validateFields();
+    setQuestionsNumber(Math.round(totalQuestions/2))
   }, []);
 
   const startTrivia = (e) => {
       e.preventDefault();
       props.form.validateFields((err, values) => {
           if(!err){
-              dispatch({type: types.SET_NAME, payload: values.name})
-              dispatch({type: types.CHOOSE_QUESTIONS})
+              dispatch({type: types.INIT_TRIVIA, payload: {name: values.name}})
+              dispatch({type: types.CHOOSE_QUESTIONS, payload: {numberOfQuestions: questionsNumber}})
               props.history.push('/trivia')
           }
       })
   }
 
+  const changeSelectedQuestions = value => {
+      setQuestionsNumber(value)
+  }
+
   const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = props.form;
   const nameError = isFieldTouched('name') && getFieldError('name');
+  const totalQuestions = allQuestions.length
   return (
     <>
         <Title>Trivia</Title>
         <Paragraph>Dime tu nombre y haz click en "Comenzar"</Paragraph>
-        <Form layout="inline" onSubmit={startTrivia}>
+        <FormStyled  onSubmit={startTrivia}>
         <Form.Item validateStatus={nameError ? 'error' : ''} help={nameError || ''}>
           {getFieldDecorator('name', {
             rules: [{ required: true, message: 'Por favor ingresa tu nombre!' }],
@@ -47,6 +55,13 @@ function Start(props) {
             />,
           )}
         </Form.Item>
+            Numero de preguntas: {questionsNumber} / {totalQuestions}
+            <Slider
+                min={Math.round(totalQuestions/2)}
+                max={totalQuestions}
+                onChange={changeSelectedQuestions}
+                value={typeof questionsNumber === 'number' ? questionsNumber : 0}
+            />
         <Button 
           htmlType="submit" 
           size="large" 
@@ -55,7 +70,7 @@ function Start(props) {
           >
             Comenzar!
           </Button>
-        </Form>
+        </FormStyled>
     </>
   );
 }

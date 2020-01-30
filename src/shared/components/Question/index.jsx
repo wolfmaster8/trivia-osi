@@ -1,14 +1,14 @@
-import React, {useContext, useState} from 'react';
-import {message, Typography, Alert, Progress, Rate, Statistic, Radio, Button} from 'antd';
+import React, { useContext, useState } from 'react';
+import { message, Alert, Radio, Button } from 'antd';
 
-import {TriviaContext, types} from '../../../context'
+import { TriviaContext, types } from '../../../context'
 
-import {ButtonsStyled, ParagraphStyled} from "./styles";
+import { ButtonsStyled, ParagraphStyled } from "./styles";
 
-const {Title, Paragraph} = Typography;
 
-function Question({question = '', currentQuestionIndex=1, nextQuestion}) {
-    const [selected, setAnswer] = useState({})
+function Question({question = '', currentQuestionIndex = 1, nextQuestion}) {
+    const [selected, setAnswer] = useState({});
+    const [correct, setCorrect] = useState(false)
     let {state, dispatch} = useContext(TriviaContext)
     const radioStyle = {
         display: 'block',
@@ -20,57 +20,61 @@ function Question({question = '', currentQuestionIndex=1, nextQuestion}) {
         setAnswer(answer)
     };
     const submitAnswer = () => {
-        console.log(selected)
-        if(selected.correct){
+        if (selected.correct) {
             dispatch({type: types.SET_CORRECT_ANSWER, payload: question.score})
             message.success('Correcto!')
-        }else{
+            setCorrect(true)
+        } else {
             dispatch({type: types.SET_INCORRECT_ANSWER, payload: question.score})
             message.error('Ouch! No es correcto')
+            setCorrect(false)
 
         }
     }
     return (
         <>
-            <ParagraphStyled><b>{currentQuestionIndex +1}. </b>{question.inquiry}</ParagraphStyled>
-            <Alert
-                message="Informational Notes"
-                description="Additional description and information about copywriting."
-                type="info"
-                showIcon
-            />
+            <ParagraphStyled><b>{currentQuestionIndex + 1}. </b>{question.inquiry}</ParagraphStyled>
+            {state.canGoToNext && !correct ?
+                <Alert
+                    message="La respuesta correcta es:"
+                    description={question.responses.map(question => question.correct && question.description)}
+                    type="info"
+                /> : null}
 
-            <Radio.Group name="radiogroup" >
-                {question.responses.map(answer => (
-                <Radio
-                    onClick={() => setSelected(answer)}
-                    style={radioStyle}
-                    value={answer.description+ currentQuestionIndex}
-                    disabled={state.canGoToNext}
-                >
-                    {answer.description}
-                </Radio>
-                ))}
-            </Radio.Group>
+            {correct || !state.canGoToNext ? (
+                <Radio.Group name="radiogroup">
+                    {question.responses.map(answer => (
+                        <Radio
+                            onClick={() => setSelected(answer)}
+                            style={radioStyle}
+                            value={answer.description + currentQuestionIndex}
+                            disabled={state.canGoToNext}
+                        >
+                            {answer.description}
+                        </Radio>
+                    ))}
+                </Radio.Group>
+            ) : null}
+
             <ButtonsStyled>
                 {!state.canGoToNext ? (
-                    <Button
-                        disabled={!selected.description}
-                        onClick={submitAnswer}
-                        type="primary"
-                        shape="circle"
-                        icon="check"
-                        size="large" />
-                ) :
+                        <Button
+                            disabled={!selected.description}
+                            onClick={submitAnswer}
+                            type="primary"
+                            shape="circle"
+                            icon="check"
+                            size="large"/>
+                    ) :
                     (
-                <Button
-                    onClick={nextQuestion}
-                    type="primary"
-                    shape="round"
-                    size="large"
-                >
-                    {state.trivia.questions[currentQuestionIndex +1] ? 'Próxima' : 'Terminar'}
-                </Button>
+                        <Button
+                            onClick={nextQuestion}
+                            type="primary"
+                            shape="round"
+                            size="large"
+                        >
+                            {state.trivia.questions[currentQuestionIndex + 1] ? 'Próxima' : 'Terminar'}
+                        </Button>
                     )}
             </ButtonsStyled>
         </>
