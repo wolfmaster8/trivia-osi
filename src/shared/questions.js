@@ -1,8 +1,9 @@
 export const allQuestions = [
   {
-    question:
+    score: 10,
+    inquiry:
       'Builds the app for production to the build folder. It correctly bundles React in production mode and optimizes the build for the best performance.',
-    answers: [
+    responses: [
       {
         description: 'Es 5',
         correct: false
@@ -18,8 +19,9 @@ export const allQuestions = [
     ]
   },
   {
-    question: 'best performance.',
-    answers: [
+    score: 6,
+    inquiry: 'best performance.',
+    responses: [
       {
         description: 'asd',
         correct: false
@@ -35,8 +37,9 @@ export const allQuestions = [
     ]
   },
   {
-    question: 'Hola',
-    answers: [
+    score: 2,
+    inquiry: 'Hola',
+    responses: [
       {
         description: '788',
         correct: true
@@ -52,8 +55,9 @@ export const allQuestions = [
     ]
   },
   {
-    question: 'Builds the ',
-    answers: [
+    score: 10,
+    inquiry: 'Builds the ',
+    responses: [
       {
         description: 'SIERRA9',
         correct: false
