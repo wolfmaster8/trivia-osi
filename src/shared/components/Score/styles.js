@@ -14,4 +14,7 @@ export const User = styled.div`
 
 export const ScoreStyled = styled.div`
   margin-bottom: 24px;
+  @media screen and (max-width: 768px) {
+    max-width: 350px;
+  }
 `;

@@ -4,7 +4,11 @@ const { Paragraph } = Typography;
 
 export const FooterStyled = styled(Paragraph)`
   position: absolute;
-  bottom: 20px;
+  bottom: 0;
   padding: 24px;
   text-align: center;
+  @media screen and (max-width: 768px) {
+    position: fixed;
+    max-width: 350px;
+  }
 `;

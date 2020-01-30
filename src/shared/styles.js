@@ -6,4 +6,7 @@ export const MainWrapper = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 80vh;
+  @media screen and (max-width: 768px) {
+    min-height: 100vh;
+  }
 `;

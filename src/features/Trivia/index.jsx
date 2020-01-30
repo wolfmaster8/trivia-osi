@@ -6,6 +6,7 @@ import {TriviaConsumer, TriviaContext, types} from '../../context'
 import Score from "../../shared/components/Score";
 
 import Question from "../../shared/components/Question";
+import { CardStyled } from "./styles";
 
 const { Title, Paragraph } = Typography;
 
@@ -65,7 +66,7 @@ class Trivia extends  React.Component {
               <Score
                   currentQuestionIndex={state.trivia.currentQuestion +1}
               />
-              <Card style={{minWidth: 500, marginBottom: 24}} loading={loading}>
+              <CardStyled loading={loading}>
                   <Badge
                       count={!loading && `${trivia.questions[trivia.currentQuestion].score} puntos`}
                       style={{ backgroundColor: !loading && getPointsColor() }}
@@ -75,7 +76,7 @@ class Trivia extends  React.Component {
                       currentQuestionIndex={!loading && trivia.currentQuestion}
                       nextQuestion={setNextQuestion}
                   />
-              </Card>
+              </CardStyled>
               <Button onClick={resetTrivia}>Reiniciar Trivia</Button>
 
           </>
