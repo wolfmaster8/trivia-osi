@@ -1,8 +1,7 @@
-import React, {useContext} from 'react';
-import {Link} from "react-router-dom";
-import { Badge, Typography, Radio, Card, Button } from 'antd';
+import React from 'react';
+import { Badge, Typography, Button } from 'antd';
 
-import {TriviaConsumer, TriviaContext, types} from '../../context'
+import { TriviaContext, types} from '../../context'
 import Score from "../../shared/components/Score";
 
 import Question from "../../shared/components/Question";
@@ -18,7 +17,7 @@ class Trivia extends  React.Component {
     }
 
     componentDidMount() {
-        const {state, dispatch} = this.context;
+        const {state} = this.context;
         if(!state.trivia.questions.length){
             this.props.history.push('/')
 
