@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Card, Typography, Avatar, Progress, Rate, Statistic} from 'antd';
+import {Card, Typography, Avatar, Progress, Statistic} from 'antd';
 
 import {TriviaContext} from '../../../context'
 
@@ -8,7 +8,7 @@ import {ScoreStyled, User} from "./styles";
 const {Title} = Typography;
 
 function Score({currentQuestionIndex}) {
-    let {state, dispatch} = useContext(TriviaContext)
+    let {state} = useContext(TriviaContext)
     const {trivia} = state;
     return (
         <ScoreStyled>
