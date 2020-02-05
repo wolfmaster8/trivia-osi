@@ -3,12 +3,13 @@ import { Typography } from 'antd';
 const { Paragraph } = Typography;
 
 export const FooterStyled = styled(Paragraph)`
-  position: absolute;
+  //position: absolute;
+  margin-top: 48px;
   bottom: 0;
   padding: 24px;
   text-align: center;
   @media screen and (max-width: 768px) {
-    position: fixed;
+    //position: fixed;
     max-width: 350px;
   }
 `;

@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import { allQuestions } from './shared/questions';
 
 let TriviaContext = React.createContext({});
@@ -41,7 +41,7 @@ const reducer = (state = initialState, action) => {
       for (let i = 0; i < choose; i++) {
         const randomNumber = Math.floor(Math.random() * totalQuestions);
         totalQuestions -= 1;
-        const selected = allQuestions[randomNumber];
+        const selected = listOfQuestions[randomNumber];
         totalPoints = totalPoints + selected.score;
         questions.push(selected);
 
