@@ -7,7 +7,10 @@ import { ButtonsStyled, ParagraphStyled } from "./styles";
 
 
 function Question({question = '', currentQuestionIndex = 1, nextQuestion}) {
-    const [selected, setAnswer] = useState({});
+    const [selected, setAnswer] = useState({
+        description: null,
+        correct: null
+    });
     const [correct, setCorrect] = useState(false)
     let {state, dispatch} = useContext(TriviaContext)
     const radioStyle = {
@@ -24,16 +27,19 @@ function Question({question = '', currentQuestionIndex = 1, nextQuestion}) {
             dispatch({type: types.SET_CORRECT_ANSWER, payload: question.score})
             message.success('Correcto!')
             setCorrect(true)
+            setAnswer({description: null, correct: null})
+
         } else {
             dispatch({type: types.SET_INCORRECT_ANSWER, payload: question.score})
             message.error('Ouch! No es correcto')
             setCorrect(false)
+            setAnswer({description: null, correct: null})
 
         }
     }
     return (
         <>
-            <ParagraphStyled><b>{currentQuestionIndex + 1}. </b>{question.inquiry}</ParagraphStyled>
+            <ParagraphStyled><b>{currentQuestionIndex + 1}. </b><span  dangerouslySetInnerHTML={{__html: question.inquiry}}/></ParagraphStyled>
             {state.canGoToNext && !correct ?
                 <Alert
                     message="La respuesta correcta es:"
@@ -58,6 +64,7 @@ function Question({question = '', currentQuestionIndex = 1, nextQuestion}) {
             ) : null}
 
             <ButtonsStyled>
+                {console.log(selected)}
                 {!state.canGoToNext ? (
                         <Button
                             disabled={!selected.description}

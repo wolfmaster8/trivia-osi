@@ -12,3 +12,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+input[type=radio] {
+  float: left;
+}
+
+label {
+  margin-left: 30px;
+  display: block;
+}

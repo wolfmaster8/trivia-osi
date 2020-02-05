@@ -57,7 +57,7 @@ function Start(props) {
         </Form.Item>
             Numero de preguntas: {questionsNumber} / {totalQuestions}
             <Slider
-                min={Math.round(totalQuestions/2)}
+                min={5}
                 max={totalQuestions}
                 onChange={changeSelectedQuestions}
                 value={typeof questionsNumber === 'number' ? questionsNumber : 0}

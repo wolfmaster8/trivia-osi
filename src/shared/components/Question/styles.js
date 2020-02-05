@@ -3,7 +3,7 @@ import { Typography } from 'antd';
 const { Paragraph } = Typography;
 
 export const ParagraphStyled = styled(Paragraph)`
-  max-width: 450px;
+  min-width: 450px;
   font-size: 21px;
   text-align: justify;
 `;

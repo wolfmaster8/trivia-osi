@@ -28,11 +28,9 @@ class Trivia extends  React.Component {
     }
 
     render(){
-      console.log(this.context)
       const {state, dispatch} = this.context;
       const {trivia} = state;
       const {loading} = this.state;
-      console.log(trivia.questions);
 
       const getPointsColor = () => {
           const questionScore = state.trivia.questions[trivia.currentQuestion].score
