@@ -64,7 +64,6 @@ function Question({question = '', currentQuestionIndex = 1, nextQuestion}) {
             ) : null}
 
             <ButtonsStyled>
-                {console.log(selected)}
                 {!state.canGoToNext ? (
                         <Button
                             disabled={!selected.description}

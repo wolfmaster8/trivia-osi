@@ -474,6 +474,297 @@ export const allQuestions = [
         correct: false
       }
     ]
+  },
+  {
+    score: 2,
+    inquiry:
+      'Cuando enviamos un mensaje por Instagram, ese mensaje nos va a llegar sí o sí. ¿Cuál es la capa del modelo OSI que proporciona esta confiabilidad en la entrega?',
+    responses: [
+      {
+        description: 'Móvil',
+        correct: false
+      },
+      {
+        description: 'Física',
+        correct: false
+      },
+      {
+        description: 'Aplicación',
+        correct: false
+      },
+      {
+        description: 'Transporte',
+        correct: true
+      }
+    ]
+  },
+  {
+    score: 7,
+    inquiry:
+      'Para asegurar el envío de información em milisegundos, se utiliza fibra óptica, ¿con qué capa se relaciona la fibra óptica?',
+    responses: [
+      {
+        description: 'Aplicación',
+        correct: false
+      },
+      {
+        description: 'Red de datos',
+        correct: false
+      },
+      {
+        description: 'Física',
+        correct: true
+      },
+      {
+        description: 'Transporte',
+        correct: false
+      }
+    ]
+  },
+  {
+    score: 8,
+    inquiry:
+      'Las tramas, son unidades de información con sentido lógico, ¿con cuál capa del modelo OSI se relacionan las tramas?',
+    responses: [
+      {
+        description: 'Aplicación',
+        correct: false
+      },
+      {
+        description: 'Historia del usuario',
+        correct: false
+      },
+      {
+        description: 'Enlace',
+        correct: true
+      },
+      {
+        description: 'Presentación',
+        correct: false
+      }
+    ]
+  },
+  {
+    score: 8,
+    inquiry:
+      'Al iniciar sesión en LinkedIn, hablamos de sesión. Esa sesión nos asegura la autorización para entrar a nuestro perfil, cambiarlo, realizar posts, etc. La sesión se relaciona con la capa:',
+    responses: [
+      {
+        description: 'Autorización',
+        correct: false
+      },
+      {
+        description: 'Sesión',
+        correct: true
+      },
+      {
+        description: 'Autenticación',
+        correct: false
+      },
+      {
+        description: 'Enlace',
+        correct: false
+      }
+    ]
+  },
+  {
+    score: 7,
+    inquiry:
+      'Al conectarnos al Wi-Fi, nuestro dispositivo puede quedarse en "Obteniendo IP..." y no pasará de ahí. ¿En cuál capa se identificará más fácil este problema?',
+    responses: [
+      {
+        description: 'Router',
+        correct: false
+      },
+      {
+        description: 'Red',
+        correct: true
+      },
+      {
+        description: 'Switch',
+        correct: false
+      },
+      {
+        description: 'IP Management',
+        correct: false
+      }
+    ]
+  },
+  {
+    score: 5,
+    inquiry:
+      'Verdadero o Falso: Un UDP, es un dispositivo que está conectado a nuestro computador',
+    responses: [
+      {
+        description: 'Verdadero',
+        correct: false
+      },
+      {
+        description: 'Falso',
+        correct: true
+      }
+    ]
+  },
+  {
+    score: 10,
+    inquiry:
+      'Verdadero o Falso: Cuando establecemos una conexión segura en una página web, lo hacemos por medio el protocolo TCPS',
+    responses: [
+      {
+        description: 'Verdadero',
+        correct: false
+      },
+      {
+        description: 'Falso',
+        correct: false
+      }
+    ]
+  },
+  {
+    score: 10,
+    inquiry:
+      '¿Es posible enviar paquetes por Wi-Fi a otro computador con diferente IP?',
+    responses: [
+      {
+        description: 'Sí',
+        correct: false
+      },
+      {
+        description: 'No',
+        correct: true
+      }
+    ]
+  },
+  {
+    score: 10,
+    inquiry:
+      '¿¿Es posible enviar paquetes por ethernet a otro computador con diferente IP?',
+    responses: [
+      {
+        description: 'Sí',
+        correct: false
+      },
+      {
+        description: 'No',
+        correct: true
+      }
+    ]
+  },
+  {
+    score: 10,
+    inquiry:
+      '¿Cuáles aplicaciones utilizan el protocolo UDP para envío de paquetes?',
+    responses: [
+      {
+        description: 'Live streaming por YouTube',
+        correct: false
+      },
+      {
+        description: 'BluRadio en vivo por internet',
+        correct: false
+      },
+      {
+        description: 'Una llamada internacional por Skype utilizando VoIP',
+        correct: false
+      },
+      {
+        description: 'Todas las anteriores',
+        correct: true
+      }
+    ]
+  },
+  {
+    score: 10,
+    inquiry:
+      '¿Cuáles aplicaciones utilizan el protocolo TCP para envío de paquetes?',
+    responses: [
+      {
+        description: 'Live streaming por YouTube',
+        correct: false
+      },
+      {
+        description: 'Envío de un mensaje por Skype',
+        correct: true
+      },
+      {
+        description: 'BluRadio en vivo por internet',
+        correct: false
+      },
+      {
+        description: 'Una llamada internacional por Skype utilizando VoIP',
+        correct: false
+      }
+    ]
+  },
+  {
+    score: 10,
+    inquiry: '¿Cuáles tipos de cables no tienen relación con el modelo OSI?',
+    responses: [
+      {
+        description: 'Cable Coaxial',
+        correct: false
+      },
+      {
+        description: 'Cable Dial',
+        correct: false
+      },
+      {
+        description: 'Cable SATA',
+        correct: true
+      },
+      {
+        description: 'Cable ethernet',
+        correct: false
+      }
+    ]
+  },
+  {
+    score: 10,
+    inquiry:
+      'ETB ofrece servicios de televisión, telefonía e Internet por fibra óptica. ¿Es correcto afirmar que para los tres servicios es utilizado el modelo OSI?',
+    responses: [
+      {
+        description: 'Sí, porque es obligatorio por ley el uso del modelo OSI.',
+        correct: false
+      },
+      {
+        description:
+          'Sí, porque los tres utilizan el internet para la transmisión de datos.',
+        correct: true
+      },
+      {
+        description:
+          'No, porque no es posible utilizar el teléfono por internet.',
+        correct: false
+      },
+      {
+        description: 'No, porque la televisión no utiliza el modelo OSI',
+        correct: false
+      }
+    ]
+  },
+  {
+    score: 10,
+    inquiry:
+      '<b>Conteste la respuesta más adecuada para los modelos OSI</b></br>Cuando estamos viendo televisión vía TDT y nos perdemos la mitad del partido de fútbol, podemos identificar el problema en:',
+    responses: [
+      {
+        description: 'La posición de la antena',
+        correct: false
+      },
+      {
+        description: 'La transmisión de paquetes vía UDP',
+        correct: true
+      },
+      {
+        description: 'La transmisión de paquetes vía TCP',
+        correct: false
+      },
+      {
+        description: 'La transmisión vía antena',
+        correct: false
+      }
+    ]
   }
   /*  {
     score: 10,
