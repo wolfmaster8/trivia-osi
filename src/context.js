@@ -13,7 +13,7 @@ export const types = {
 };
 
 const initialState = {
-  name: 'Felipe',
+  name: '',
   score: 0,
   canGoToNext: false,
   trivia: {
@@ -31,6 +31,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case types.INIT_TRIVIA:
       // console.log(action);
+      // Spread Operator
       return { ...state, name: action.payload.name };
     case types.CHOOSE_QUESTIONS:
       let questions = [];
