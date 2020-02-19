@@ -616,7 +616,7 @@ export const allQuestions = [
       },
       {
         description: 'Falso',
-        correct: false
+        correct: true
       }
     ]
   },
